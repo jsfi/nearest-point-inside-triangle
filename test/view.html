@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="1000"></canvas>
+<button id="prev">Prev</button>
+<button id="next">Next</button>
+<script>
+(function() {
+    'use strict';
+
+    let result = [[[[0,0],[1,0],[0,1]],[0.75,0.75],[0.5,0.5]],[[[0.78128,-0.10985],[-0.84714,-0.20558],[-0.08925,-0.78608]],[-0.99103,0.43842],[-0.84714,-0.20558]],[[[-0.87374,-0.3787],[0.86403,0.60374],[0.01392,0.84362]],[0.15087,-0.56212],[-0.17587417774128575,0.01583512169035678]],[[[-0.92633,0.27408],[0.92439,0.43692],[0.8298,-0.29647]],[0.1114,0.66496],[0.13755613528144114,0.3676885514120072]],[[[-0.42283,-0.97999],[0.58659,-0.327],[-0.22656,0.80896]],[0.87786,-0.8594],[0.5491289474759362,-0.3512334139284823]],[[[0.86119,0.78278],[-0.01348,0.98093],[-0.56244,-0.75129]],[0.43525,-0.8923],[-0.17110536971035334,-0.32959706272806955]],[[[0.63263,0.17177],[-0.38398,-0.43497],[-0.31123,0.73168]],[-0.73365,0.28332],[-0.34071677838967435,0.258817456930398]],[[[-0.93622,0.89397],[0.93117,0.40775],[0.2323,-0.30718]],[-0.57694,-0.87713],[0.12368795380083793,-0.19553504801618868]],[[[0.60118,0.73186],[0.32178,0.88296],[-0.90087,-0.26367]],[0.91059,0.75966],[0.60118,0.73186]],[[[0.99108,0.13557],[0.50122,-0.8724],[0.43385,0.00167]],[0.3463,-0.89397],[0.50122,-0.8724]],[[[-0.29829,0.21429],[0.31395,0.2734],[0.43267,-0.78192]],[0.88121,0.36469],[0.31395,0.2734]]]
+
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    let i = 0;
+
+    document.getElementById('prev').addEventListener('click', e => {
+        i--;
+        if (i < 0) {
+            i = result.length - 1;
+        }
+
+        draw(i);
+    });
+
+    document.getElementById('next').addEventListener('click', e => {
+        i++;
+        if (i >= result.length) {
+            i = 0;
+        }
+
+        draw(i);
+    });
+
+    draw(0);
+
+    function draw(i) {
+        let draw = result[i];
+        let triangle = draw[0];
+        let oP = draw[1];
+        let nP = draw[2];
+
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.strokeStyle ='#000';
+        ctx.moveTo(p(triangle[0][0]), p(triangle[0][1]));
+        ctx.lineTo(p(triangle[1][0]), p(triangle[1][1]));
+        ctx.lineTo(p(triangle[2][0]), p(triangle[2][1]));
+        ctx.lineTo(p(triangle[0][0]), p(triangle[0][1]));
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle ='#f00';
+        ctx.moveTo(p(oP[0]), p(oP[1]));
+        ctx.arc(p(oP[0]), p(oP[1]), 2, 0, 2*Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#0f0';
+        ctx.moveTo(p(nP[0]), p(nP[1]));
+        ctx.arc(p(nP[0]), p(nP[1]), 2, 0, 2*Math.PI);
+        ctx.stroke();
+    }
+
+    function p(pos) {
+        return pos * 400 + 400;
+    }
+}());
+</script>
+</body>
+</html>

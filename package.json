@@ -1,0 +1,44 @@
+{
+  "name": "nearest-point-inside-triangle",
+  "description": "Check if a point is inside a triangle",
+  "version": "1.0.1",
+  "homepage": "https://github.com/jsfi/nearest-point-inside-triangle#readme",
+  "author": {
+    "name": "Martin Sachse",
+    "email": "martin.sachse@gmail.com",
+    "url": "http://jsfi.io"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/eslint/bin/eslint.js index.js lib/*.js && node node_modules/mocha/bin/mocha test/**/*_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsfi/nearest-point-inside-triangle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsfi/nearest-point-inside-triangle/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "point",
+    "triangle",
+    "geometry",
+    "inside",
+    "collision",
+    "2d"
+  ],
+  "devDependencies": {
+    "eslint": "^1.9.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.3.3"
+  },
+  "dependencies": {
+    "point-inside-triangle": "^1.0.1",
+    "points-distance": "github:jsfi/points-distance",
+    "points-to-slope-intercept": "github:jsfi/points-to-slope-intercept"
+  }
+}
