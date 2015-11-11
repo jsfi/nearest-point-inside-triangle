@@ -1,7 +1,7 @@
 {
   "name": "nearest-point-inside-triangle",
   "description": "Check if a point is inside a triangle",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/jsfi/nearest-point-inside-triangle#readme",
   "author": {
     "name": "Martin Sachse",
